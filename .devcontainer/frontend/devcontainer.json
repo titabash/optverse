@@ -1,0 +1,30 @@
+{
+  "name": "frontend_app",
+  "dockerComposeFile": [
+    "../../docker-compose.frontend.yaml",
+    "../../docker-compose.backend.yaml"
+  ],
+  "service": "frontend_app",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "FernandoTheRojo.nandorojo-tamagui",
+        "bradlc.vscode-tailwindcss",
+        "GitHub.copilot"
+      ],
+      "settings": {
+        "extensions.verifySignature": false,
+        "typescript.tsdk": "./node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "typescript.preferences.importModuleSpecifier": "non-relative",
+        "eslint.useESLintClass": true
+      }
+    }
+  },
+  "onCreateCommand": "cd /app/packages/ui && nohup yarn watch &"
+}

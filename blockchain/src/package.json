@@ -1,0 +1,39 @@
+{
+  "name": "hardhat-project",
+  "scripts": {
+    "hardhat": "hardhat"
+  },
+  "devDependencies": {
+    "@chainlink/hardhat-chainlink": "^0.0.2",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.4",
+    "@nomicfoundation/hardhat-viem": "^1.0.0",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@types/chai": "^4.3.11",
+    "@types/chai-as-promised": "^7.1.8",
+    "@types/lodash": "^4.14.202",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.19",
+    "chai": "^4.4.1",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.19.5",
+    "hardhat-gas-reporter": "^1.0.10",
+    "solidity-coverage": "^0.8.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0",
+    "viem": "^1.15.1"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^0.8.0",
+    "@chainlink/functions-toolkit": "^0.2.8",
+    "arweave": "^1.14.4",
+    "dotenv": "^16.4.5",
+    "ethereumjs-wallet": "^1.0.2",
+    "lodash": "^4.17.21",
+    "openzeppelin-solidity": "^4.8.1",
+    "weavedb-sdk": "^0.39.1",
+    "weavedb-sdk-node": "^0.39.0"
+  }
+}

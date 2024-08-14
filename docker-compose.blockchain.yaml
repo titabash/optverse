@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  hardhat:
+    container_name: hardhat
+    build: ./blockchain/docker
+    ports:
+      - 8545:8545
+    volumes:
+      - ./blockchain/src:/hardhat
+    tty: true
+    hostname: hardhat
+    networks:
+      - supabase_network
+    env_file:
+      - ./env/local.docker.env
+      - ./env/secrets.env
+    entrypoint: "/bin/bash -c 'npm install && npx hardhat node'"
+  ipfs:
+    container_name: ipfs
+    image: ipfs/go-ipfs:latest
+    ports:
+      - "4001:4001"
+      - "8005:8080"
+      - "5002:5001"
+    networks:
+      - supabase_network
+    volumes:
+      - ./ipfs/data:/data/ipfs
+      - ./ipfs/contents:/export
+  arlocal:
+    container_name: arlocal
+    image: textury/arlocal:latest
+    platform: linux/x86_64
+    ports:
+      - "1820:1984"
+    networks:
+      - supabase_network
+    volumes:
+      - ./aragon:/aragon
+
+networks:
+  python-app-network:
+  supabase_network:
+    name: supabase_network_${PROJECT_NAME}
+    external: true

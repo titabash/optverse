@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "dprint.dprint",
+    "NomicFoundation.hardhat-solidity",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

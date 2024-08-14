@@ -1,0 +1,8 @@
+build/
+public/
+**/coverage/
+**/node_modules/
+**/__generated__/
+**/generated/
+**/*.min.js
+*.config.js

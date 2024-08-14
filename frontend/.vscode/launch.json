@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "expo",
+      "request": "attach",
+      "name": "Debug Expo",
+      "projectRoot": "${workspaceFolder}/apps/expo",
+      "bundlerPort": "8081",
+      "bundlerHost": "127.0.0.1"
+    },
+    {
+      "type": "reactnative",
+      "request": "attach",
+      "name": "Debug React Native",
+      "cwd": "${workspaceFolder}/apps/expo"
+    },
+    {
+      "name": "Run Expo on Android",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn native:android"
+    },
+    {
+      "name": "Run Expo on iOS",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn native:ios"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "folders": [
+    {
+      "name": "backend-ts",
+      "path": "backend-ts/app"
+    },
+    {
+      "name": "backend-py",
+      "path": "backend-py/app"
+    },
+    {
+      "path": "frontend"
+    },
+    {
+      "path": "blockchain"
+    },
+    {
+      "name": "edge function",
+      "path": "supabase/functions"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
+  ],
+  "settings": {}
+}

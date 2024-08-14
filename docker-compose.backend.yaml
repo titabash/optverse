@@ -1,0 +1,55 @@
+version: "3.8"
+services:
+  backend_app_ts:
+    container_name: backend_app_ts
+    build:
+      context: .
+      dockerfile: ./backend-ts/docker/Dockerfile
+    ports:
+      - 3030:3000
+    volumes:
+      - ./backend-ts/app:/service/app
+      - ./prisma:/service/prisma
+    tty: true
+    hostname: backend-ts
+    working_dir: /service
+    networks:
+      - supabase_network
+    env_file:
+      - ./env/local.docker.env
+      - ./env/secrets.env
+    entrypoint: "/bin/bash -c 'cd app && yarn set version 4.1.0 && yarn install --refresh-lockfile && yarn start:dev'"
+
+  backend_app_py:
+    container_name: backend_app_py
+    build:
+      context: .
+      dockerfile: ./backend-py/docker/Dockerfile
+    ports:
+      - 4040:8000
+    volumes:
+      - ./backend-py/app:/service/app
+      - ./prisma:/service/prisma
+    tty: true
+    hostname: backend-py
+    working_dir: /service
+    stdin_open: true
+    networks:
+      - supabase_network
+    env_file:
+      - ./env/local.docker.env
+      - ./env/secrets.env
+    command: /bin/bash -c "prisma generate --schema=./prisma/schema.prisma --generator backendPyClient && uvicorn app:app --proxy-headers --reload --host 0.0.0.0"
+  inngest:
+    image: inngest/inngest:latest
+    command: "inngest dev -u http://backend-py:8000/api/inngest --no-discovery"
+    hostname: inngest
+    ports:
+      - "8288:8288"
+    networks:
+      - supabase_network
+
+networks:
+  supabase_network:
+    name: supabase_network_${PROJECT_NAME}
+    external: true
